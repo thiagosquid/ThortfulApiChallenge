@@ -24,7 +24,7 @@ public class RandomUserController {
         this.randomUserService = randomUserService;
     }
 
-    @GetMapping
+    @GetMapping(produces ={"application/json"})
     public ResponseEntity<ResponseDTO<RandomUser>> getAllWithFilters(
             @RequestParam(name = "gender", required = false) String gender,
             @RequestParam(name = "password", required = false) String password,
@@ -36,8 +36,8 @@ public class RandomUserController {
 
         RequestFilter filter = RequestFilter.builder().gender(gender).password(password)
                 .nat(nat).inc(inc).exc(exc).page(page).results(results).build();
-
-        return randomUserService.getAllWithFilters(filter, response);
+        ResponseDTO<RandomUser> allWithFilters = randomUserService.getAllWithFilters(filter, response);
+        return ResponseEntity.ok(allWithFilters);
 
     }
 }

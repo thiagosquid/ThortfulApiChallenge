@@ -2,9 +2,11 @@ package com.thiago.thortfulapichallenge.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class RandomUser {
     private String gender;
     private Name name;
