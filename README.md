@@ -19,7 +19,7 @@ or
 
 Into the folder that contains the `pom.xml` file you can run the command below:
 ```shell
-mvn spring-boo:run
+mvn spring-boot:run
 ```
 
 ### Running the tests
