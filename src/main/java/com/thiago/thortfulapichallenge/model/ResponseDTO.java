@@ -9,8 +9,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDTO<T> {
-    private List<T> results;
+public class ResponseDTO {
+    private List<RandomUser> results;
     private Info info;
 
     @Getter

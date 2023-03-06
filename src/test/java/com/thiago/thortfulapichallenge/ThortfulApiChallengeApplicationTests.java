@@ -30,7 +30,7 @@ class ThortfulApiChallengeApplicationTests {
     @Test
     @Order(1)
     void getARandomUser(CapturedOutput output) {
-        ResponseEntity<ResponseDTO<RandomUser>> response = this.testRestTemplate
+        ResponseEntity<ResponseDTO> response = this.testRestTemplate
                 .exchange("/random-user", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                 });
 

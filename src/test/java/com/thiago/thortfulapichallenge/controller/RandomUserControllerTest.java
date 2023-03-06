@@ -32,7 +32,7 @@ class RandomUserControllerTest {
     void givenANullRequestFilter_thenShouldFetchARandomUser() throws Exception {
         //Given
         RandomUser randomUserReceived = generateARandomUserObject();
-        ResponseDTO<RandomUser> responseDTO = new ResponseDTO<>();
+        ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setResults(Arrays.asList(randomUserReceived));
         responseDTO.setInfo(getAInfoObject());
 

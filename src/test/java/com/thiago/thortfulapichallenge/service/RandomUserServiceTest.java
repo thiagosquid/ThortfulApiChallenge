@@ -47,23 +47,23 @@ class RandomUserServiceTest {
         //Given
         RequestFilter filter = RequestFilter.builder().build();
 
-        ResponseDTO<RandomUser> randomUserResponseDTO = new ResponseDTO<>();
+        ResponseDTO randomUserResponseDTO = new ResponseDTO();
         RandomUser randomUserReceived = new RandomUser();
         randomUserReceived.setId(new Id());
         randomUserResponseDTO.setResults(Arrays.asList(randomUserReceived));
         randomUserResponseDTO.setInfo(new ResponseDTO.Info());
 
-        ResponseEntity<ResponseDTO<RandomUser>> responseEntity = new ResponseEntity<>(randomUserResponseDTO, HttpStatus.OK);
+        ResponseEntity<ResponseDTO> responseEntity = new ResponseEntity<>(randomUserResponseDTO, HttpStatus.OK);
 
         //When
         when(restTemplate.exchange(
                 ArgumentMatchers.anyString(),
                 ArgumentMatchers.any(HttpMethod.class),
                 ArgumentMatchers.<HttpEntity<?>>any(),
-                ArgumentMatchers.<ParameterizedTypeReference<ResponseDTO<RandomUser>>>any()))
+                ArgumentMatchers.<ParameterizedTypeReference<ResponseDTO>>any()))
                 .thenReturn(responseEntity);
 
-        ResponseDTO<RandomUser> response = randomUserService.getAllWithFilters(filter, httpServletResponse);
+        ResponseDTO response = randomUserService.getAllWithFilters(filter, httpServletResponse);
 
         //Then
         assertEquals(1, response.getResults().size());
@@ -85,7 +85,7 @@ class RandomUserServiceTest {
                 ArgumentMatchers.anyString(),
                 ArgumentMatchers.any(HttpMethod.class),
                 ArgumentMatchers.<HttpEntity<?>>any(),
-                ArgumentMatchers.<ParameterizedTypeReference<ResponseDTO<RandomUser>>>any()))
+                ArgumentMatchers.<ParameterizedTypeReference<ResponseDTO>>any()))
                 .thenThrow(httpClientErrorException);
 
         Exception exception = assertThrows(HttpClientErrorException.class, () -> randomUserService.getAllWithFilters(filter, mockHttpServletResponse));

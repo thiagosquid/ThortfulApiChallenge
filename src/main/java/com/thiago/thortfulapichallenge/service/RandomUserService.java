@@ -28,8 +28,8 @@ public class RandomUserService {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseDTO<RandomUser> getAllWithFilters(RequestFilter filter, @NonNull HttpServletResponse response) throws HttpClientErrorException, IOException {
-        ParameterizedTypeReference<ResponseDTO<RandomUser>> parameterizedTypeReference = new ParameterizedTypeReference<>() {
+    public ResponseDTO getAllWithFilters(RequestFilter filter, @NonNull HttpServletResponse response) throws HttpClientErrorException, IOException {
+        ParameterizedTypeReference<ResponseDTO> parameterizedTypeReference = new ParameterizedTypeReference<>() {
         };
         log.info("Executing request with filter={}", filter);
 
