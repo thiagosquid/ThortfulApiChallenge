@@ -4,6 +4,10 @@ import com.thiago.thortfulapichallenge.model.RandomUser;
 import com.thiago.thortfulapichallenge.model.ResponseDTO;
 import com.thiago.thortfulapichallenge.service.RandomUserService;
 import com.thiago.thortfulapichallenge.utils.RequestFilter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -24,8 +28,13 @@ public class RandomUserController {
         this.randomUserService = randomUserService;
     }
 
-    @GetMapping
-    public ResponseEntity<ResponseDTO<RandomUser>> getAllWithFilters(
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Returns an object entity that contains a list of users " +
+                    "and a info object", content = {@Content(mediaType = "application/json", schema =
+            @Schema(implementation = ResponseDTO.class))})
+    })
+    @GetMapping(produces ={"application/json"})
+    public ResponseEntity<ResponseDTO> getAllWithFilters(
             @RequestParam(name = "gender", required = false) String gender,
             @RequestParam(name = "password", required = false) String password,
             @RequestParam(name = "nat", required = false) String nat,
@@ -36,8 +45,8 @@ public class RandomUserController {
 
         RequestFilter filter = RequestFilter.builder().gender(gender).password(password)
                 .nat(nat).inc(inc).exc(exc).page(page).results(results).build();
-
-        return randomUserService.getAllWithFilters(filter, response);
+        ResponseDTO allWithFilters = randomUserService.getAllWithFilters(filter, response);
+        return ResponseEntity.ok(allWithFilters);
 
     }
 }

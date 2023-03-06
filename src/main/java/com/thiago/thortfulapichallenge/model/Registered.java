@@ -1,11 +1,15 @@
 package com.thiago.thortfulapichallenge.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Registered {
-    private String date;
-    private Long age;
+    private LocalDateTime date;
+    private Integer age;
 }

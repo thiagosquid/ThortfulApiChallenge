@@ -1,11 +1,13 @@
 package com.thiago.thortfulapichallenge.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Street {
-    private Long number;
+    private Integer number;
     private String name;
 }

@@ -1,19 +1,24 @@
 package com.thiago.thortfulapichallenge.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
-public class ResponseDTO<T> {
-    private List<T> results;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ResponseDTO {
+    private List<RandomUser> results;
     private Info info;
 
     @Getter
     @Setter
-    static class Info{
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Info {
         private String seed;
         private Integer results;
         private Integer page;

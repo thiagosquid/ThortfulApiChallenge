@@ -5,6 +5,7 @@ import com.thiago.thortfulapichallenge.model.RandomUser;
 import com.thiago.thortfulapichallenge.model.ResponseDTO;
 import com.thiago.thortfulapichallenge.utils.RequestFilter;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,29 +18,33 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class RandomUserService {
 
     private final RestTemplate restTemplate;
-    private final String BASE_URL_API = "https://randomuser.me/api/";
+    public final String BASE_URL_API = "https://randomuser.me/api/";
 
     public RandomUserService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<ResponseDTO<RandomUser>> getAllWithFilters(RequestFilter filter, @NonNull HttpServletResponse response) throws IOException {
-        ParameterizedTypeReference<ResponseDTO<RandomUser>> parameterizedTypeReference = new ParameterizedTypeReference<>() {
+    public ResponseDTO getAllWithFilters(RequestFilter filter, @NonNull HttpServletResponse response) throws HttpClientErrorException, IOException {
+        ParameterizedTypeReference<ResponseDTO> parameterizedTypeReference = new ParameterizedTypeReference<>() {
         };
+        log.info("Executing request with filter={}", filter);
 
         String urlRequest = buildUrlRequest(filter);
         try {
-            return restTemplate.exchange(urlRequest, HttpMethod.GET, null, parameterizedTypeReference);
+            log.info("Request to URL={}", urlRequest);
+
+            return restTemplate.exchange(urlRequest, HttpMethod.GET, null, parameterizedTypeReference).getBody();
         } catch (HttpClientErrorException e) {
             response.setStatus(e.getStatusCode().value());
             ParameterizedTypeReference<Map<String, String>> ptr = new ParameterizedTypeReference<>() {
             };
             response.setContentType("application/json");
             new ObjectMapper().writeValue(response.getOutputStream(), e.getResponseBodyAs(ptr));
-            return null;
+            throw new HttpClientErrorException(e.getStatusCode());
         }
     }
 
