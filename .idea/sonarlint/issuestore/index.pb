@@ -21,3 +21,7 @@ k
 ;src/main/java/com/thiago/thortfulapichallenge/model/Id.java,a/6/a653997e0cddfcafaf473e7f34fc444915454870
 q
 Asrc/main/java/com/thiago/thortfulapichallenge/model/Location.java,b/c/bc693d206a35f5f8461313cd6bc2f3d90565486f
+v
+Fsrc/main/java/com/thiago/thortfulapichallenge/utils/RequestFilter.java,8/c/8c0a565f031b48488671d9024f8099be993d0761
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0

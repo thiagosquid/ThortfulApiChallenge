@@ -21,3 +21,7 @@ q
 Asrc/main/java/com/thiago/thortfulapichallenge/model/Timezone.java,8/0/80b5869a3b803834fa7eca4b2257263842e5b8b1
 t
 Dsrc/main/java/com/thiago/thortfulapichallenge/model/ResponseDTO.java,3/a/3ad1dfe3b1843128997f344e55dc25dbe2e103ec
+v
+Fsrc/main/java/com/thiago/thortfulapichallenge/utils/RequestFilter.java,8/c/8c0a565f031b48488671d9024f8099be993d0761
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0

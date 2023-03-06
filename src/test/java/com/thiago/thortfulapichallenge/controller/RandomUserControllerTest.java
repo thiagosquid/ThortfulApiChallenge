@@ -46,9 +46,6 @@ class RandomUserControllerTest {
 
         this.mockMvc.perform(get("/random-user").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.results[0].email").value("weerwrwerw"))
-//                .andReturn()
-        ;
-
+                .andExpect(jsonPath("$.results[0].email").value("weerwrwerw"));
     }
 }
