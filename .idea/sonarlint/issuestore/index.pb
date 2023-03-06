@@ -1,26 +1,6 @@
 
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-s
-Csrc/main/java/com/thiago/thortfulapichallenge/model/RandomUser.java,2/c/2c9c4730d0eba2b2d372cf01a254b8e93f031a65
-m
-=src/main/java/com/thiago/thortfulapichallenge/model/Name.java,a/a/aa5e6a00f533e80eeb5529e44d6eb92f727531a5
-n
->src/main/java/com/thiago/thortfulapichallenge/model/Login.java,5/f/5f9ea65c28417ab1797bc853403742301b682be1
-t
-Dsrc/main/java/com/thiago/thortfulapichallenge/model/ResponseDTO.java,3/a/3ad1dfe3b1843128997f344e55dc25dbe2e103ec
-q
-Asrc/main/java/com/thiago/thortfulapichallenge/model/Timezone.java,8/0/80b5869a3b803834fa7eca4b2257263842e5b8b1
-o
-?src/main/java/com/thiago/thortfulapichallenge/model/Street.java,c/a/cab102cc66355d0aaac2f183ed179d0e28317cce
-s
-Csrc/main/java/com/thiago/thortfulapichallenge/model/Registered.java,0/4/0472323276689a1991a96b10fb3e49af671d6e7b
-l
-<src/main/java/com/thiago/thortfulapichallenge/model/Dob.java,b/d/bdcf5025f3283da04d042430d1d9b47ba5d52894
-k
-;src/main/java/com/thiago/thortfulapichallenge/model/Id.java,a/6/a653997e0cddfcafaf473e7f34fc444915454870
-q
-Asrc/main/java/com/thiago/thortfulapichallenge/model/Location.java,b/c/bc693d206a35f5f8461313cd6bc2f3d90565486f
 v
 Fsrc/main/java/com/thiago/thortfulapichallenge/utils/RequestFilter.java,8/c/8c0a565f031b48488671d9024f8099be993d0761
 S
