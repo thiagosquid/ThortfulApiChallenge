@@ -32,9 +32,8 @@ class RandomUserControllerTest {
     void givenANullRequestFilter_thenShouldFetchARandomUser() throws Exception {
         //Given
         RandomUser randomUserReceived = generateARandomUserObject();
-        ResponseDTO responseDTO = new ResponseDTO();
-        responseDTO.setResults(Arrays.asList(randomUserReceived));
-        responseDTO.setInfo(getAInfoObject());
+        ResponseDTO responseDTO = ResponseDTO.builder()
+                .results(Arrays.asList(randomUserReceived)).info(getAnInfoObject()).build();
 
         given(randomUserService.getAllWithFilters(ArgumentMatchers.any(RequestFilter.class),
                 ArgumentMatchers.any(HttpServletResponse.class))).willReturn(responseDTO);
@@ -72,7 +71,7 @@ class RandomUserControllerTest {
                 .build();
     }
 
-    private ResponseDTO.Info getAInfoObject() {
+    private ResponseDTO.Info getAnInfoObject() {
         return ResponseDTO.Info.builder().seed("b46c7b66672d5cbc").results(1).page(1).version("1.4").build();
     }
 }
