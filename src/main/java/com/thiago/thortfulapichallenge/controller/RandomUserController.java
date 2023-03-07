@@ -1,6 +1,5 @@
 package com.thiago.thortfulapichallenge.controller;
 
-import com.thiago.thortfulapichallenge.model.RandomUser;
 import com.thiago.thortfulapichallenge.model.ResponseDTO;
 import com.thiago.thortfulapichallenge.service.RandomUserService;
 import com.thiago.thortfulapichallenge.utils.RequestFilter;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/random-user")
+@RequestMapping("/random-users")
 public class RandomUserController {
 
     private final RandomUserService randomUserService;

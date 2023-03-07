@@ -1,14 +1,13 @@
 package com.thiago.thortfulapichallenge.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thiago.thortfulapichallenge.model.RandomUser;
 import com.thiago.thortfulapichallenge.model.ResponseDTO;
 import com.thiago.thortfulapichallenge.utils.RequestFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -22,7 +21,9 @@ import java.util.Map;
 public class RandomUserService {
 
     private final RestTemplate restTemplate;
-    public final String BASE_URL_API = "https://randomuser.me/api/";
+
+    @Value("${base.url.api}")
+    public String BASE_URL_API;
 
     public RandomUserService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -33,7 +34,7 @@ public class RandomUserService {
         };
         log.info("Executing request with filter={}", filter);
 
-        String urlRequest = buildUrlRequest(filter);
+        String urlRequest = BASE_URL_API + filter.buildUrlRequest();
         try {
             log.info("Request to URL={}", urlRequest);
 
@@ -46,19 +47,5 @@ public class RandomUserService {
             new ObjectMapper().writeValue(response.getOutputStream(), e.getResponseBodyAs(ptr));
             throw new HttpClientErrorException(e.getStatusCode());
         }
-    }
-
-    private String buildUrlRequest(RequestFilter filter) {
-        String url = BASE_URL_API + "?";
-
-        url += filter.getGender() != null ? "gender=" + filter.getGender().concat("&") : "";
-        url += filter.getPassword() != null ? "password=" + filter.getPassword().concat("&") : "";
-        url += filter.getNat() != null ? "nat=" + filter.getNat().concat("&") : "";
-        url += filter.getInc() != null ? "inc=" + filter.getInc().concat("&") : "";
-        url += filter.getExc() != null ? "exc=" + filter.getExc().concat("&") : "";
-        url += filter.getPage() != null ? "page=" + filter.getPage().toString().concat("&") : "";
-        url += filter.getResults() != null ? "results=" + filter.getResults().toString().concat("&") : "";
-
-        return url;
     }
 }
