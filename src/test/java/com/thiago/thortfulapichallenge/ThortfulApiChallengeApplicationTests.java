@@ -31,7 +31,7 @@ class ThortfulApiChallengeApplicationTests {
     @Order(1)
     void getARandomUser(CapturedOutput output) {
         ResponseEntity<ResponseDTO> response = this.testRestTemplate
-                .exchange("/random-user", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+                .exchange("/random-users", HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                 });
 
         assertTrue(output.getOut().contains("Request to URL="));
@@ -44,7 +44,7 @@ class ThortfulApiChallengeApplicationTests {
         ResponseEntity<String> response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         for (int i = 0; i < 6; i++) {
             response = this.testRestTemplate
-                    .exchange("/random-user?results=5000", HttpMethod.GET, null, String.class);
+                    .exchange("/random-users?results=5000", HttpMethod.GET, null, String.class);
         }
         assertTrue(output.getOut().contains("Request to URL="));
         assertEquals(HttpStatus.TOO_MANY_REQUESTS, response.getStatusCode(), "Status Code different from 423");

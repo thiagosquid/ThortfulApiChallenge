@@ -38,7 +38,7 @@ class RandomUserControllerTest {
         given(randomUserService.getAllWithFilters(ArgumentMatchers.any(RequestFilter.class),
                 ArgumentMatchers.any(HttpServletResponse.class))).willReturn(responseDTO);
 
-        this.mockMvc.perform(get("/random-user").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/random-users").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.results[0].email").value(randomUserReceived.getEmail()))
                 .andExpect(jsonPath("$.results[0].login.username").value(randomUserReceived.getLogin().getUsername()));

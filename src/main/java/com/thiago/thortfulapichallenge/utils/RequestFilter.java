@@ -16,4 +16,17 @@ public class RequestFilter {
     private Integer page;
     private Integer results;
 
+    public String buildUrlRequest() {
+        String query = "?";
+
+        query += gender != null ? "gender=" + gender.concat("&") : "";
+        query += password != null ? "password=" + password.concat("&") : "";
+        query += nat != null ? "nat=" + nat.concat("&") : "";
+        query += inc != null ? "inc=" + inc.concat("&") : "";
+        query += exc != null ? "exc=" + exc.concat("&") : "";
+        query += page != null ? "page=" + page.toString().concat("&") : "";
+        query += results != null ? "results=" + results.toString().concat("&") : "";
+
+        return query;
+    }
 }
